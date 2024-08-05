@@ -1,0 +1,55 @@
+{
+  "name": "we-cropper",
+  "type": "module",
+  "version": "0.0.1",
+  "private": false,
+  "packageManager": "pnpm@8.15.7",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.umd.cjs"
+      }
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "README.md",
+    "dist",
+    "package.json",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "playground": "vite",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.24.1",
+    "@types/node": "^20.14.14",
+    "@vitejs/plugin-vue": "^5.1.2",
+    "@vue/compiler-sfc": "^3.4.35",
+    "@vueuse/core": "^10.11.0",
+    "eslint": "^9.8.0",
+    "typescript": "^5.5.4",
+    "unocss": "^0.61.9",
+    "vite": "^5.3.5",
+    "vite-plugin-dts": "^3.9.1",
+    "vue": "^3.4.35",
+    "vue-advanced-cropper": "^2.8.9",
+    "vue-tsc": "^2.0.29"
+  }
+}

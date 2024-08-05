@@ -1,0 +1,11 @@
+include:
+  - project: mfex/ctils
+    ref: master
+    file: src/gitlab-conf/package-manager.yml
+
+stages:
+  - publish
+
+publish_to_npm:
+  stage: publish
+  extends: .package-manager
