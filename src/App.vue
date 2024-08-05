@@ -6,7 +6,7 @@ import '@mfex/we-cropper/style.css'
 import { useFileDialog } from '@vueuse/core'
 
 const { showCropper, onCrop } = useCropper({
-  'aspect-ratio': 1 / 1,
+  aspectRatio: 1 / 1,
 })
 
 // @vueuse/core
