@@ -12,6 +12,10 @@ Wechat style image cropper wrapper with vue-advanced-cropper
 - ✨默认 esm umd 格式支持
 - ✨Typescript 友好
 
+## 要求
+
+"vue": "^3.0.0"
+
 ## 用法
 
 ```javascript
