@@ -1,4 +1,4 @@
-# @mfex/we-cropper
+# we-cropper
 
 仿微信裁剪器
 
@@ -15,9 +15,9 @@ Wechat style image cropper wrapper with vue-advanced-cropper
 ## 用法
 
 ```javascript
-// @mfex/we-cropper
-import { fileToBase64, useCropper } from '@mfex/we-cropper'
-import '@mfex/we-cropper/style.css'
+// lizy0329-biubiubiu/we-cropper
+import { fileToBase64, useCropper } from 'lizy0329-biubiubiu/we-cropper'
+import 'lizy0329-biubiubiu/we-cropper/style.css'
 const { showCropper, onCrop } = useCropper({
   'aspect-ratio': 1 / 1,
 })
