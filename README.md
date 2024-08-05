@@ -1,3 +1,7 @@
+# wip...
+
+尚未上传到 npm ，但代码 pnpm build 后可用
+
 # we-cropper
 
 仿微信裁剪器
