@@ -23,9 +23,9 @@ Wechat style image cropper wrapper with vue-advanced-cropper
 ## 用法
 
 ```javascript
-// lizy0329-biubiubiu/we-cropper
-import { fileToBase64, useCropper } from 'lizy0329-biubiubiu/we-cropper'
-import 'lizy0329-biubiubiu/we-cropper/style.css'
+// @lizychy0329/we-cropper
+import { fileToBase64, useCropper } from '@lizychy0329/we-cropper'
+import '@lizychy0329/we-cropper/style.css'
 const { showCropper, onCrop } = useCropper({
   aspectRatio: 1 / 1,
 })

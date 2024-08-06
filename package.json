@@ -1,5 +1,5 @@
 {
-  "name": "we-cropper",
+  "name": "@lizychy0329/we-cropper",
   "type": "module",
   "version": "0.0.1",
   "private": false,
@@ -21,10 +21,10 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
+    "LICENSE",
     "README.md",
     "dist",
-    "package.json",
-    "LICENSE"
+    "package.json"
   ],
   "scripts": {
     "dev": "vite build --watch",
