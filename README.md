@@ -1,7 +1,3 @@
-# wip...
-
-尚未上传到 npm ，但代码 pnpm build 后可用
-
 # we-cropper
 
 仿微信裁剪器
@@ -19,6 +15,10 @@ Wechat style image cropper wrapper with vue-advanced-cropper
 ## 要求
 
 "vue": "^3.0.0"
+
+## 安装
+
+`pnpm i @lizychy0329/we-cropper`
 
 ## 用法
 
@@ -53,6 +53,53 @@ onCrop((base64String) => {
 ## 截图
 
 ![仿微信裁剪器](https://files.catbox.moe/hcjd0s.png)
+
+## 类型&API
+
+```Typescript
+/**
+ * @description: base64 to blob
+ * @param base64String
+ */
+export declare function base64ToBlob(base64String: string): Promise<Blob>;
+
+/**
+ * @description: blob to base64
+ * @param file
+ */
+export declare function fileToBase64(file: File): Promise<string>;
+
+/**
+ * @description: url to base64
+ * @param url
+ * @param mineType 'image/png'
+ */
+export declare function urlToBase64(url: string, mineType?: string): Promise<string>;
+
+export declare function useCropper(options?: UseCropperOptions): {
+    onCrop: EventHookOn<any>;
+    showCropper: (src: string) => void;
+};
+
+declare type UseCropperOptions = Omit<WeCropperOptions, 'src'>;
+
+declare interface WeCropperOptions {
+    /**
+     * A base64string created from File
+     *
+     * @remarks Can use utils/fileToBase64 methods to transform
+     */
+    src: string;
+    /**
+     * Cropper box aspect-ratio controll
+     *
+     * @default 1 / 1
+     */
+    aspectRatio?: number;
+}
+
+export { }
+```
 
 ## 开发调试
 
