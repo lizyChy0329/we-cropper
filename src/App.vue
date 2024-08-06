@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 // @mfex/we-cropper
-import { fileToBase64, useCropper } from '@mfex/we-cropper'
+import { fileToBase64, useCropper } from '@lizychy0329/we-cropper'
 import '@mfex/we-cropper/style.css'
 import { useFileDialog } from '@vueuse/core'
 
