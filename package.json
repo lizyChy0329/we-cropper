@@ -4,6 +4,11 @@
   "version": "0.0.2",
   "private": false,
   "packageManager": "pnpm@8.15.7",
+  "homepage": "https://github.com/lizyChy0329/we-cropper",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lizyChy0329/we-cropper"
+  },
   "exports": {
     ".": {
       "import": {
