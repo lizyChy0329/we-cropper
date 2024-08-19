@@ -11,7 +11,9 @@ import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const userConfig: UserConfig = {}
+  const userConfig: UserConfig = {
+    base: 'we-cropper',
+  }
 
   const defaultPlugins = [
     vue(),
