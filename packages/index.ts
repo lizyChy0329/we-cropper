@@ -31,7 +31,7 @@ function createCropper(cropperConfig: WeCropperOptions) {
   type DefaultProps = typeof defaultProps
   type CropperComponentProps = DefaultProps & WeCropperOptions
 
-  async function createCropperComponent(cropperComponentProps: CropperComponentProps) {
+  async function createCropperComponent(cropperComponentProps: CropperComponentProps): Promise<void> {
     const vueComponent = h(Cropper, cropperComponentProps)
 
     render(vueComponent, bodyEl)
@@ -45,8 +45,8 @@ function createCropper(cropperConfig: WeCropperOptions) {
   }
 }
 
-export function useCropper(options: UseCropperOptions = {}) {
-  const showCropper = (src: string) => {
+export function useCropper(options: UseCropperOptions = {}): Record<string, unknown> {
+  const showCropper = (src: string): void => {
     const cropperConfig = {
       src,
       ...options,

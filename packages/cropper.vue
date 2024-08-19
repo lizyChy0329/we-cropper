@@ -20,11 +20,11 @@ const emit = defineEmits<{
 const cropper = ref()
 const isCropperPending = ref(true)
 
-function onReady() {
+function onReady(): void {
   isCropperPending.value = false
 }
 
-function crop() {
+function crop(): void {
   const { canvas } = cropper.value.getResult()
   const cropedImage = canvas.toDataURL()
 
@@ -32,15 +32,15 @@ function crop() {
   emit('update:modelValue', false)
 }
 
-function rotate(angle: number) {
+function rotate(angle: number): void {
   cropper.value.rotate(angle)
 }
 
-function reset() {
+function reset(): void {
   cropper.value.reset()
 }
 
-function cancel() {
+function cancel(): void {
   emit('update:modelValue', false)
 }
 </script>
