@@ -23,7 +23,7 @@ onBeforeMount(async () => {
 <template>
   <div class="w-full h-full min-h-screen bg-neutral-50 dark:bg-neutral-900">
     <div class="container mx-auto max-w-5xl relative">
-      <nav class="h-20 py-4 flex-between text-primary">
+      <nav class="h-20 px-4 sm:px-0 py-4 flex-between text-primary">
         <div class="font-semibold text-xl flex-center gap-2">
           <Logo class="h-6 w-6" />
           we-cropper
@@ -38,32 +38,32 @@ onBeforeMount(async () => {
           </button>
           <a
             class="opacity-50 hover:opacity-100 transition"
-            href="https://github.com/xiaoluoboding/vue-library-starter"
+            href="https://github.com/lizyChy0329"
           >
             <carbon:logo-github class="h-6 w-6" />
           </a>
         </div>
       </nav>
-      <header class="py-20">
+      <header class="px-4 sm:px-0 py-10">
         <div class="font-extrabold space-y-4">
-          <span class="text-6xl text-neon">Cropping Simply</span>
+          <span class="text-6xl text-primary">Simply Cropping</span>
           <div class="text-6xl text-primary">
-            Like WeChat!
+            Like <span text-neon>WeChat!</span>
           </div>
         </div>
         <div
           class="text-2xl font-semibold text-slate-700 py-4 dark:text-slate-200"
         >
-          A wechat style image cropper wrapper with vue-advanced-cropper
+          A wechat style image cropper wrapped with vue-advanced-cropper
         </div>
-        <div class="grid grid-cols-2 gap-4 mt-8">
-          <!-- <a
+        <!-- <div class="grid grid-cols-2 gap-4 mt-8">
+          <a
             class="bg-gray-200 hover:bg-gray-300 transition rounded-full text-lg font-semibold py-3 px-6 w-full sm:w-auto text-center"
             href="https://github.com/xiaoluoboding/vue-library-starter"
             target="_blank"
           >
             <span>Documentation</span>
-          </a> -->
+          </a>
           <a
             class="bg-emerald-400 hover:bg-emerald-500 flex items-center justify-center space-x-3 transition rounded-full text-white text-lg font-semibold py-3 px-6 w-full sm:w-auto cursor-pointer"
             href="https://github.com/lizyChy0329/we-cropper"
@@ -71,18 +71,24 @@ onBeforeMount(async () => {
           >
             <span>Documentation</span>
           </a>
-        </div>
+        </div> -->
       </header>
 
-      <div space-y-4>
-        <main class=" text-xs 2xl:text-sm drop-shadow-sm dark:(drop-shadow-color-gray-700) [&>pre]:(p-4 rounded-xl bg-transparent)" v-html="html" />
-
+      <div space-y-4 px-4 sm:px-0>
+        <h2 class="text-2xl font-bold my-4 text-primary">
+          Demo
+        </h2>
         <!-- playground -->
         <Playground />
+
+        <h2 class="text-2xl font-bold text-primary">
+          Install
+        </h2>
+        <main class=" text-xs 2xl:text-sm drop-shadow-sm dark:(drop-shadow-color-gray-700) [&>pre]:(p-4 rounded-xl bg-transparent)" v-html="html" />
       </div>
 
       <footer
-        class="mt-16 w-full flex-center text-primary"
+        class="py-16 w-full flex-center text-primary"
         text="slate-900 dark:slate-300 opacity-60 sm"
       >
         <div class="copyright flex flex-col justify-center items-center">

@@ -29,12 +29,6 @@ devDependencies:
   '@vueuse/core':
     specifier: ^10.11.1
     version: 10.11.1(vue@3.4.37)
-  clean-css:
-    specifier: ^5.3.3
-    version: 5.3.3
-  minimatch:
-    specifier: ^9.0.1
-    version: 9.0.1
   shiki:
     specifier: ^1.13.0
     version: 1.13.0
@@ -2353,13 +2347,6 @@ packages:
 
   /classnames@2.5.1:
     resolution: {integrity: sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==}
-    dev: true
-
-  /clean-css@5.3.3:
-    resolution: {integrity: sha512-D5J+kHaVb/wKSFcyyV75uCn8fiY4sV38XJoe4CUyGQ+mOU/fMVYUdH1hJC+CJQ5uY3EnW27SbJYS4X8BiLrAFg==}
-    engines: {node: '>= 10.0'}
-    dependencies:
-      source-map: 0.6.1
     dev: true
 
   /clean-regexp@1.0.0:

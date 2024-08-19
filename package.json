@@ -20,7 +20,10 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "lib"
+    "LICENSE",
+    "README.md",
+    "dist",
+    "package.json"
   ],
   "scripts": {
     "dev": "vite",
@@ -40,8 +43,6 @@
     "@vitejs/plugin-vue": "^5.1.2",
     "@vue/tsconfig": "^0.5.1",
     "@vueuse/core": "^10.11.1",
-    "clean-css": "^5.3.3",
-    "minimatch": "^9.0.1",
     "shiki": "^1.13.0",
     "typescript": "^5.5.4",
     "unocss": "^0.62.1",
