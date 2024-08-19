@@ -104,4 +104,4 @@ export { }
 ## 开发调试
 
 开发：pnpm dev
-生产：pnpm build
+生产：pnpm build:lib
