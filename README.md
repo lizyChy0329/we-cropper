@@ -1,107 +1,95 @@
-# we-cropper
+# Vue Library Starter
 
-仿微信裁剪器
+[![NPM][npmBadge]][npmUrl]
+[![Minzip Package][bundlePhobiaBadge]][bundlePhobiaUrl]
+[![NPM Download][npmDtBadge]][npmDtUrl]
 
-Wechat style image cropper wrapper with vue-advanced-cropper
+[npmBadge]: https://img.shields.io/npm/v/vue-library-starter.svg?maxAge=2592000
+[npmUrl]: https://www.npmjs.com/package/vue-library-starter
+[npmDtBadge]: https://img.shields.io/npm/dt/vue-library-starter.svg
+[npmDtUrl]: https://www.npmjs.com/package/vue-library-starter
+[bundlePhobiaBadge]: https://img.shields.io/bundlephobia/minzip/vue-library-starter
+[bundlePhobiaUrl]: https://bundlephobia.com/package/vue-library-starter@latest
 
-## 特性
+> A minimal Vue library starter, built on top of Vite & Vue 3
 
-- ✨API 简单
-- ✨固定裁剪框
-- ✨自动放大裁剪区域
-- ✨默认 esm umd 格式支持
-- ✨Typescript 友好
+## Table of Contents
 
-## 要求
+<details>
 
-"vue": "^3.0.0"
+<summary>TOC</summary>
 
-## 安装
+- [Vue Library Starter](#vue-library-starter)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [Use the Template](#use-the-template)
+    - [GitHub Template](#github-template)
+    - [Clone to local](#clone-to-local)
+  - [Usage](#usage)
+    - [1、Install dependencies](#1install-dependencies)
+    - [2、Build a library](#2build-a-library)
+    - [3、Publish to npm](#3publish-to-npm)
+  - [License](#license)
 
-`pnpm i @lizychy0329/we-cropper`
+</details>
 
-## 用法
+## Features
 
-```javascript
-// @lizychy0329/we-cropper
-import { fileToBase64, useCropper } from '@lizychy0329/we-cropper'
-import '@lizychy0329/we-cropper/style.css'
-const { showCropper, onCrop } = useCropper({
-  aspectRatio: 1 / 1,
-})
+- Package manager [pnpm](https://pnpm.js.org/), safe and fast
+- Bundle with the [library mode](https://vitejs.dev/guide/build.html#library-mode)
+- Release with [semantic-release](https://www.npmjs.com/package/semantic-release)
+- Publish to [npm](https://docs.npmjs.com/cli/v8/commands/npm-publish)
 
-// @vueuse/core
-const { open, onChange } = useFileDialog({
-  multiple: false,
-  accept: 'image/*'
-})
+## Use the Template
 
-// start
-const cropedImage = ref('')
-onChange(async (files) => {
-  const base64String = await fileToBase64(files[0])
-  showCropper(base64String)
-})
+### GitHub Template
 
-onCrop((base64String) => {
-  cropedImage.value = base64String
+[create a repo from this template on GitHub](https://github.com/new?template_name=vue-library-starter&template_owner=xiaoluoboding)
 
-  // 上传...
-})
+### Clone to local
+
+```bash
+git clone https://github.com/xiaoluoboding/vue-library-starter
+
+cd vue-library-starter
 ```
 
-## 截图
+## Usage
 
-![仿微信裁剪器](https://files.catbox.moe/hcjd0s.png)
+Building it is as easy as 1, 2, 3.
 
-## 类型&API
+### 1、Install dependencies
 
-```Typescript
-/**
- * @description: base64 to blob
- * @param base64String
- */
-export declare function base64ToBlob(base64String: string): Promise<Blob>;
-
-/**
- * @description: blob to base64
- * @param file
- */
-export declare function fileToBase64(file: File): Promise<string>;
-
-/**
- * @description: url to base64
- * @param url
- * @param mineType 'image/png'
- */
-export declare function urlToBase64(url: string, mineType?: string): Promise<string>;
-
-export declare function useCropper(options?: UseCropperOptions): {
-    onCrop: EventHookOn<any>;
-    showCropper: (src: string) => void;
-};
-
-declare type UseCropperOptions = Omit<WeCropperOptions, 'src'>;
-
-declare interface WeCropperOptions {
-    /**
-     * A base64string created from File
-     *
-     * @remarks Can use utils/fileToBase64 methods to transform
-     */
-    src: string;
-    /**
-     * Cropper box aspect-ratio controll
-     *
-     * @default 1 / 1
-     */
-    aspectRatio?: number;
-}
-
-export { }
+```bash
+pnpm install
 ```
 
-## 开发调试
+### 2、Build a library
 
-开发：pnpm dev
-生产：pnpm build
+Rename all the `vue-library-starter` to your component name in the file `package.json、vite.config.ts`, eg: `my-component`
+
+```bash
+pnpm run build:lib
+```
+
+### 3、Publish to npm
+
+```
+npm publish
+```
+
+## License
+
+MIT [@xiaoluoboding](https://github.com/xiaoluoboding)
+
+## Change
+
+- remove sass devDependencies
+~~- Support Top-level await in script setup~~
+
+- Add @antfu/eslint-config
+- Fix vue module type error
+- Fix @vue/tsconfig type error
+- Replace highlight.js with shiki
+- Replace inline-css with vite-plugin-libcss
+- Remove prettier config files
