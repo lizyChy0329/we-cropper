@@ -1,11 +1,17 @@
 export interface WeCropperOptions {
-
   /**
    * A base64string created from File
    *
    * @remarks Can use utils/fileToBase64 methods to transform
    */
   src: string
+
+  /**
+   * A base64string created from File
+   *
+   * @default document.body
+   */
+  el?: HTMLElement | string
 
   /**
    * Cropper box aspect-ratio controll

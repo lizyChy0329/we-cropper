@@ -12,7 +12,7 @@ import dts from 'vite-plugin-dts'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const userConfig: UserConfig = {
-    base: 'we-cropper',
+    base: '/we-cropper',
   }
 
   const defaultPlugins = [
@@ -87,6 +87,12 @@ export default defineConfig(({ mode }) => {
       },
     }
   }
+
+  // userConfig.server = {
+  //   watch: {
+  //     ignored: 'dist/**',
+  //   },
+  // }
 
   return {
     resolve: {
