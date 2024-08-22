@@ -8,6 +8,10 @@ import { useFileDialog } from '@vueuse/core'
 const { showCropper, onCrop } = useCropper({
   el: '#demoContainer',
   aspectRatio: 1 / 1,
+  loadingText: '加载中...',
+  resetText: '还原',
+  confirmText: '确定',
+  cancelText: '取消',
 })
 
 // @vueuse/core
@@ -39,7 +43,7 @@ function reset(): void {
 </script>
 
 <template>
-  <div id="demoContainer" class="relative p-6 bg-gray-100 dark:bg-[#262335] rounded-lg w-[375px] h-[738px] after:(content-['Demo'] absolute inset-0 flex justify-center items-center text-gray-400 text-2xl pointer-events-none)">
+  <div id="demoContainer" class="relative p-6 bg-gray-100 dark:bg-[#262335] rounded-lg w-full sm:w-[375px] h-[738px] after:(content-['Demo'] absolute inset-0 flex justify-center items-center text-gray-400 text-2xl pointer-events-none)">
     <div class="flex gap-2">
       <button
         type="button" class="bg-[color:#44bd87] text-white border-b-[#249252] rounded  align-middle px-[15px] py-[3px] border-b-2 border-none border-solid outline-none

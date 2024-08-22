@@ -44,21 +44,23 @@ onBeforeMount(async () => {
           </a>
         </div>
       </nav>
-      <header flex gap-4 class="px-4 sm:px-0 py-10">
+      <header class="flex flex-col sm:flex-row gap-4 px-4 sm:px-0 py-10">
         <div>
-          <div class="font-extrabold space-y-4">
-            <span class="text-6xl text-primary">Simply Cropping</span>
-            <div class="text-6xl text-primary">
+          <div class="font-extrabold space-y-1 sm:space-y-4">
+            <span class="text-2xl sm:text-6xl text-primary">Simply Cropping</span>
+            <div class="text-2xl sm:text-6xl text-primary">
               Like <span text-neon>WeChat!</span>
             </div>
           </div>
           <div
-            class="text-2xl font-semibold text-slate-400 py-4 dark:text-slate-200"
+            class="text-lg sm:text-2xl font-semibold text-slate-400 py-4 dark:text-slate-200"
           >
             A wechat style image cropper wrapped with vue-advanced-cropper
           </div>
 
-          <div mt-8>
+          <div
+            class="mt-0 sm:mt-8"
+          >
             <h2 class="text-2xl font-bold text-primary py-4">
               Install
             </h2>

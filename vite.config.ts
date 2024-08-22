@@ -88,13 +88,15 @@ export default defineConfig(({ mode }) => {
     }
   }
 
-  // userConfig.server = {
-  //   watch: {
-  //     ignored: 'dist/**',
-  //   },
-  // }
-
   return {
+    server: {
+      watch: {
+        ignored: ['!**/dist/**'],
+      },
+    },
+    optimizeDeps: {
+      exclude: ['@lizychy0329/we-cropper'],
+    },
     resolve: {
       alias: {
         '@': resolve(__dirname, './packages'),

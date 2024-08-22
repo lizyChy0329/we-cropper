@@ -27,11 +27,11 @@
     "package.json"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --force",
     "build:docs": "vite build --mode docs",
     "build:lib": "vite build --mode lib",
     "watch:lib": "vite build -w --mode lib",
-    "preview": "vite preview",
+    "preview": "vite preview --mode docs",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
