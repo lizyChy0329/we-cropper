@@ -29,6 +29,10 @@ import { fileToBase64, useCropper } from '@lizychy0329/we-cropper'
 const { showCropper, onCrop } = useCropper({
   el: '#demoContainer', // default: document.body
   aspectRatio: 1 / 1,
+  loadingText: '加载中...',
+  resetText: '还原',
+  confirmText: '确定',
+  cancelText: '取消',
 })
 
 // @vueuse/core
@@ -103,6 +107,34 @@ declare interface WeCropperOptions {
      * @default 1 / 1
      */
     aspectRatio?: number;
+
+    /**
+     * loading text
+     *
+     * @default Loading...
+     */
+    loadingText?: string
+
+    /**
+     * reset button text
+     *
+     * @default Reset
+     */
+    resetText?: string
+
+    /**
+     * confirm button text
+     *
+     * @default Confirm
+     */
+    confirmText?: string
+
+    /**
+     * cancel button text
+     *
+     * @default Cancel
+     */
+    cancelText?: string
 }
 
 export { }
@@ -110,9 +142,12 @@ export { }
 
 ## 开发调试
 
-开发：pnpm dev
+开发：pnpm dev / pnpm watch:lib
+
 生产：pnpm build:lib
 
-x 增大按钮点击区域
-x 添加文案修改接口
+~~*x 增大按钮点击区域*~~
+
+~~*x 添加文案修改接口*~~
+
 x 调整 icon

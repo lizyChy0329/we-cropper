@@ -19,6 +19,34 @@ export interface WeCropperOptions {
    * @default 1 / 1
    */
   aspectRatio?: number
+
+  /**
+   * loading text
+   *
+   * @default Loading...
+   */
+  loadingText?: string
+
+  /**
+   * reset button text
+   *
+   * @default Reset
+   */
+  resetText?: string
+
+  /**
+   * confirm button text
+   *
+   * @default Confirm
+   */
+  confirmText?: string
+
+  /**
+   * cancel button text
+   *
+   * @default Cancel
+   */
+  cancelText?: string
 }
 
 export type UseCropperOptions = Omit<WeCropperOptions, 'src'>
