@@ -1,0 +1,60 @@
+{
+  "name": "@lizychy0329/we-cropper",
+  "type": "module",
+  "version": "1.0.0",
+  "packageManager": "pnpm@9.7.1",
+  "description": "A wechat style image cropper wrapper with vue-advanced-cropper",
+  "author": "@lizychy0329 <lizy0329@163.com>",
+  "homepage": "https://github.com/lizyChy0329/we-cropper",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lizyChy0329/we-cropper.git"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
+    }
+  },
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist",
+    "package.json"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build:docs": "vite build --mode docs",
+    "build:lib": "vite build --mode lib",
+    "watch:lib": "vite build -w --mode lib",
+    "preview": "vite preview",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.25.1",
+    "@bimdata/vite-plugin-libcss": "^0.0.1",
+    "@iconify/json": "^2.2.237",
+    "@types/node": "^22.3.0",
+    "@unocss/reset": "^0.62.1",
+    "@vitejs/plugin-vue": "^5.1.2",
+    "@vue/tsconfig": "^0.5.1",
+    "@vueuse/core": "^10.11.1",
+    "shiki": "^1.13.0",
+    "typescript": "^5.5.4",
+    "unocss": "^0.62.1",
+    "unplugin-icons": "^0.19.2",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.4.0",
+    "vite-plugin-dts": "^4.0.3",
+    "vite-plugin-libcss": "^1.1.1",
+    "vue": "^3.4.37",
+    "vue-advanced-cropper": "^2.8.9",
+    "vue-tsc": "^2.0.29"
+  }
+}
