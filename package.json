@@ -32,9 +32,7 @@
     "build:lib": "vite build --mode lib",
     "watch:lib": "vite build -w --mode lib",
     "preview": "vite preview --mode docs",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.25.1",
@@ -45,7 +43,9 @@
     "@vitejs/plugin-vue": "^5.1.2",
     "@vue/tsconfig": "^0.5.1",
     "@vueuse/core": "^10.11.1",
+    "lint-staged": "^15.2.9",
     "shiki": "^1.13.0",
+    "simple-git-hooks": "^2.11.1",
     "typescript": "^5.5.4",
     "unocss": "^0.62.1",
     "unplugin-icons": "^0.19.2",
@@ -56,5 +56,11 @@
     "vue": "^3.4.37",
     "vue-advanced-cropper": "^2.8.9",
     "vue-tsc": "^2.0.29"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
