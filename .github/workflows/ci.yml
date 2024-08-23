@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Lint
-        run: pnpm lint:fix
+      - name: Lint Staged
+        run: pnpm lint-staged
 
   # test:
   #   runs-on: ${{ matrix.os }}
