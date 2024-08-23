@@ -2,9 +2,11 @@
 name: Deploy Static Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  # push:
-  # branches: ["main"]
+  push:
+    branches:
+      - main # 监听 main 分支的推送
+    paths:
+      - 'docs/**' # 监测特定目录的变化
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -40,7 +42,7 @@ jobs:
         with:
           # Upload docs catalog
           path: ./docs
-          
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
