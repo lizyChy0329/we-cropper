@@ -1,7 +1,7 @@
 {
   "name": "@lizychy0329/we-cropper",
   "type": "module",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "packageManager": "pnpm@9.7.1",
   "description": "A wechat style image cropper wrapper with vue-advanced-cropper",
   "author": "@lizychy0329 <lizy0329@163.com>",
