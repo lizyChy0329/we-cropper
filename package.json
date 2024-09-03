@@ -32,6 +32,7 @@
     "build:lib": "vite build --mode lib",
     "watch:lib": "vite build -w --mode lib",
     "preview": "vite preview --mode docs",
+    "release": "bumpp",
     "lint": "eslint ."
   },
   "peerDependencies": {
