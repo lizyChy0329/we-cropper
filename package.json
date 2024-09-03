@@ -34,15 +34,20 @@
     "preview": "vite preview --mode docs",
     "lint": "eslint ."
   },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.25.1",
     "@bimdata/vite-plugin-libcss": "^0.0.1",
-    "@iconify/json": "^2.2.237",
+    "@iconify-json/carbon": "^1.2.1",
     "@types/node": "^22.3.0",
     "@unocss/reset": "^0.62.1",
     "@vitejs/plugin-vue": "^5.1.2",
     "@vue/tsconfig": "^0.5.1",
     "@vueuse/core": "^10.11.1",
+    "bumpp": "^9.5.2",
+    "eslint-plugin-format": "^0.1.2",
     "lint-staged": "^15.2.9",
     "shiki": "^1.13.0",
     "simple-git-hooks": "^2.11.1",

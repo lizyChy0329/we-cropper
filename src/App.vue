@@ -25,7 +25,8 @@ onBeforeMount(async () => {
     <div class="container mx-auto max-w-5xl relative">
       <nav class="h-20 px-4 sm:px-0 py-4 flex-between text-primary">
         <div class="font-semibold text-xl flex-center gap-2">
-          <Logo class="h-6 w-6" />
+          <!-- <Logo class="h-6 w-6" /> -->
+          <img src="./components/logo.svg" class="h-6 w-6">
           we-cropper
         </div>
         <div class="flex-center gap-4">

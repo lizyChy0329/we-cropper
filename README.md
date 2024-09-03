@@ -1,26 +1,27 @@
-# we-cropper
+<h2 align="center"><img src="https://files.catbox.moe/cmdn41.svg" height="128" /><br />we-cropper</h2>
+<p align="center"><strong>⚡️ A simply wechat-style image cropper wrapped with vue-advanced-cropper
+</strong></p>
+<p align=center>
+<a href="https://www.npmjs.com/package/@lizychy0329/we-cropper"><img alt="NPM Version" src="https://img.shields.io/npm/v/%40lizychy0329%2Fwe-cropper?color=25234c1&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40lizychy0329%2Fwe-cropper"></a>
+</p>
 
-仿微信裁剪器
+## Feature
 
-A simply wechat-style image cropper wrapped with vue-advanced-cropper
+- ✨ Easy to use: only one core `useCropper`
+- 🚀 Fixed cropping box
+- 🎯 Automatically zoom-in on the crop area
+- ❄️ ESM / UMD support
+- 🦾 Typescript support
 
-## 特性
-
-- ✨API 简单
-- ✨固定裁剪框
-- ✨自动放大裁剪区域
-- ✨默认 esm umd 格式支持
-- ✨Typescript 友好
-
-## 要求
+## peerDependencies
 
 "vue": "^3.0.0"
 
-## 安装
+## Install
 
 `pnpm i @lizychy0329/we-cropper`
 
-## 用法
+## Usage
 
 ```javascript
 // @lizychy0329/we-cropper
@@ -55,11 +56,11 @@ onCrop((base64String) => {
 })
 ```
 
-## 截图
+## Screenshot
 
-![仿微信裁剪器](https://files.catbox.moe/hcjd0s.png)
+![we-cropper](https://files.catbox.moe/hcjd0s.png)
 
-## 类型&API
+## Typescript
 
 ```Typescript
 /**
@@ -140,14 +141,8 @@ declare interface WeCropperOptions {
 export { }
 ```
 
-## 开发调试
+## Local Dev
 
-开发：pnpm dev / pnpm watch:lib
+dev：pnpm dev / pnpm watch:lib
 
-生产：pnpm build:lib
-
-~~*x 增大按钮点击区域*~~
-
-~~*x 添加文案修改接口*~~
-
-x 调整 icon
+build：pnpm build:lib
