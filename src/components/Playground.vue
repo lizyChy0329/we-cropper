@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 // @lizychy0329/we-cropper
-import { fileToBase64, useCropper } from '@lizychy0329/we-cropper'
 import { useFileDialog } from '@vueuse/core'
+import { fileToBase64, useCropper } from '../../packages'
 
 // const demoContainer = ref(null)
 const { showCropper, onCrop } = useCropper({

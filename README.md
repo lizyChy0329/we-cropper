@@ -143,6 +143,8 @@ export { }
 
 ## Local Dev
 
-dev：pnpm dev / pnpm watch:lib
+dev：pnpm dev
 
 build：pnpm build:lib
+
+docs build:docs
