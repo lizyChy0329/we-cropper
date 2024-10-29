@@ -1,5 +1,5 @@
 <h2 align="center"><img src="https://files.catbox.moe/cmdn41.svg" height="128" /><br />we-cropper</h2>
-<p align="center"><strong>⚡️ A simply wechat-style image cropper wrapped with vue-advanced-cropper
+<p align="center"><strong>⚡️ A simple WeChat-style image cropper, implemented with vue-advanced-cropper.
 </strong></p>
 <p align=center>
 <a href="https://www.npmjs.com/package/@lizychy0329/we-cropper"><img alt="NPM Version" src="https://img.shields.io/npm/v/%40lizychy0329%2Fwe-cropper?color=25234c1&link=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2F%40lizychy0329%2Fwe-cropper"></a>
