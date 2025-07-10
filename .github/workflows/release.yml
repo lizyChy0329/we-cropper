@@ -31,7 +31,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
-        run: pnpm i --frozen-lockfile
+        run: pnpm i  --no-frozen-lockfile
 
       - run: npx changelogithub
         env:
