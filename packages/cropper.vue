@@ -61,13 +61,14 @@ function cancel(): void {
     <!-- canvas -->
     <Cropper
       ref="cropper"
-      class=":uno: h-full w-full [&_.vue-simple-handler-wrapper]:(size-6) [&_.vue-simple-handler--west-north]:(size-4) [&_.vue-simple-handler--east-south]:(size-4) [&_.vue-simple-handler--west-south]:(size-4) [&_.vue-simple-handler--east-north]:(size-4)"
+      class=":uno: h-full w-full [&_.vue-simple-handler-wrapper]:(size-6) [&_.vue-simple-handler--west-north]:(size-4 opacity-100) [&_.vue-simple-handler--east-south]:(size-4 opacity-100) [&_.vue-simple-handler--west-south]:(size-4 opacity-100) [&_.vue-simple-handler--east-north]:(size-4 opacity-100)"
 
       bsrc="https://0.z.wiki/autoupload/20240708/BSGF/1130X750/65535_53035727810_fce2af1c7e_h_750_1130_nofilter.jp"
       :src="src"
       :auto-zoom="true"
       :stencil-props="{
         movable: false,
+        resizable: true,
         aspectRatio: props.aspectRatio,
         handlers: {
           eastNorth: true,
@@ -81,11 +82,16 @@ function cancel(): void {
         },
       }"
       image-restriction="stencil"
-      :resize-image="{ touch: false, wheel: false }"
+      :resize-image="{ touch: true, wheel: true, adjustStencil: false }"
       :min-width="300"
       :min-height="300"
       @ready="onReady"
     />
+
+    <!-- :stencilSize="{
+        width: 300,
+	      height: 300,
+      }" -->
 
     <!-- action -->
     <div class=":uno: absolute bottom-0 w-full bg-[#111]/70 text-white divide-x-0 divide-y-1 divide-solid divide-slate-800 pb-[env(safe-area-inset-bottom)]">
