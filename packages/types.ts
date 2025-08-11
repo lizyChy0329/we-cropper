@@ -21,30 +21,46 @@ export interface WeCropperOptions {
   aspectRatio?: number
 
   /**
-   * loading text
+   * Locale configuration for internationalization
+   *
+   * @default 'en'
+   */
+  locale?: import('./types/locale').LocaleCode
+
+  /**
+   * Custom locale messages for internationalization
+   */
+  customLocale?: Partial<Record<import('./types/locale').LocaleCode, Partial<import('./types/locale').LocaleMessages>>>
+
+  /**
+   * loading text (deprecated, use locale instead)
    *
    * @default Loading...
+   * @deprecated Use locale configuration instead
    */
   loadingText?: string
 
   /**
-   * reset button text
+   * reset button text (deprecated, use locale instead)
    *
    * @default Reset
+   * @deprecated Use locale configuration instead
    */
   resetText?: string
 
   /**
-   * confirm button text
+   * confirm button text (deprecated, use locale instead)
    *
    * @default Confirm
+   * @deprecated Use locale configuration instead
    */
   confirmText?: string
 
   /**
-   * cancel button text
+   * cancel button text (deprecated, use locale instead)
    *
    * @default Cancel
+   * @deprecated Use locale configuration instead
    */
   cancelText?: string
 }
