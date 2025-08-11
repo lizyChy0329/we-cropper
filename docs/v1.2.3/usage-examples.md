@@ -311,3 +311,11 @@ setLocale('zh-cn')  // 切换到中文
 **版本**: v1.2.3  
 **最后更新**: 2024-01-01  
 **维护者**: we-cropper 开发团队
+
+## 宣传语
+
+```
+we-cropper: A powerful WeChat-style image cropper built with Vue 3, now featuring i18n support with vibeCoding!
+
+Example URL: <https://lizychy0329.github.io/we-cropper/>
+```
