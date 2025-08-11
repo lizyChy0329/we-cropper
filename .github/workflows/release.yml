@@ -33,14 +33,42 @@ jobs:
       - name: Install Dependencies
         run: pnpm i  --no-frozen-lockfile
 
-      - run: npx changelogithub
+      - name: Generate Changelog
+        run: |
+          # 获取当前tag
+          CURRENT_TAG=${{ github.ref_name }}
+          echo "Current tag: $CURRENT_TAG"
+          
+          # 获取上一个tag
+          PREVIOUS_TAG=$(git describe --tags --abbrev=0 ${CURRENT_TAG}^ 2>/dev/null || echo "")
+          echo "Previous tag: $PREVIOUS_TAG"
+          
+          # 如果有上一个tag，则生成changelog
+          if [ -n "$PREVIOUS_TAG" ]; then
+            echo "Generating changelog from $PREVIOUS_TAG to $CURRENT_TAG"
+            npx changelogithub --from "$PREVIOUS_TAG" --to "$CURRENT_TAG"
+          else
+            echo "No previous tag found, generating changelog from first commit"
+            npx changelogithub --from "$(git rev-list --max-parents=0 HEAD)" --to "$CURRENT_TAG"
+          fi
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: PNPM build lib
         run: pnpm build:lib
           
-      - run: npm publish
+      - name: Publish to NPM
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
           NPM_CONFIG_PROVENANCE: true
+          
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body_path: CHANGELOG.md
+          files: |
+            dist/*
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
