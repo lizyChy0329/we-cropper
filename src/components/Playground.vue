@@ -3,12 +3,14 @@ import { ref } from 'vue'
 // @lizychy0329/we-cropper
 import { useFileDialog } from '@vueuse/core'
 import { fileToBase64, useCropper } from '../../packages'
+import type { LocaleCode } from '../../packages/types/locale'
 
 // const demoContainer = ref(null)
-const { showCropper, onCrop } = useCropper({
+const currentLocale = ref<LocaleCode>('en')
+const { showCropper, onCrop, setLocale } = useCropper({
   el: '#demoContainer',
   aspectRatio: 1 / 1,
-  locale: 'zh-CN'
+  locale: currentLocale.value
 })
 
 // @vueuse/core
@@ -37,6 +39,11 @@ onCrop((base64String: string) => {
 function reset(): void {
   cropedImage.value = ''
 }
+
+function changeLocale(locale: LocaleCode): void {
+  currentLocale.value = locale
+  setLocale(locale)
+}
 </script>
 
 <template>
@@ -55,6 +62,22 @@ function reset(): void {
       >
         Reset
       </button>
+
+      <select 
+        v-model="currentLocale" 
+        @change="changeLocale(currentLocale)"
+        class="bg-[color:#44bd87] text-white border-b-[#249252] rounded align-middle px-[15px] py-[3px] border-b-2 border-none border-solid outline-none text-shadow-[1px_1px_1px_#249252] hover:bg-[#19633b] active:(border-b-0 border-t-2 border-t-[#19633b])"
+      >
+        <option value="en">EN</option>
+        <option value="zh-CN">中文</option>
+        <option value="zh-TW">繁體</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+        <option value="ru">Русский</option>
+      </select>
     </div>
 
     <div v-if="cropedImage" class="border-2 border-green border-solid bg-gray-300 p-1 size-50 mt-4">

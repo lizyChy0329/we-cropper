@@ -75,6 +75,7 @@ export function useCropper(options: UseCropperOptions = {}): {
     const cropperConfig = {
       src,
       ...options,
+      locale: currentLocale.value, // 使用动态的currentLocale值
     }
 
     createCropper(cropperConfig)
