@@ -154,6 +154,7 @@ const showCropperWithCustom = () => {
 | fr | 法语 | fr.ts |
 | de | 德语 | de.ts |
 | es | 西班牙语 | es.ts |
+| ru | 俄语 | ru.ts |
 
 ## api 参考
 
@@ -205,6 +206,7 @@ npm install vue-i18n@^9.0.0
 #### 2. 更新代码
 
 **之前 (v1.2.2):**
+
 ```typescript
 const { showCropper } = useCropper({
   loadingText: 'loading...',
@@ -215,6 +217,7 @@ const { showCropper } = useCropper({
 ```
 
 **之后 (v1.2.3):**
+
 ```typescript
 // 方式1：使用预设语言
 const { showCropper } = useCropper({
@@ -264,23 +267,32 @@ a: 可以通过自定义语言包的方式添加新语言：
 
 ```typescript
 const customLocale = {
-  'ru': {  // 俄语
+  'ru': { // 俄语
     loading: 'загрузка...',
     reset: 'сброс',
     confirm: 'подтвердить',
-    cancel: 'отмена'
+    cancel: 'отмена',
+    rotate: 'повернуть',
+    error: {
+      loadImage: 'Ошибка загрузки изображения',
+      cropImage: 'Ошибка обрезки изображения'
+    },
+    tooltip: {
+      rotate: 'Повернуть',
+      reset: 'Сброс'
+    }
   }
 }
 
 const { showCropper } = useCropper({
-  locale: 'ru',
-  customLocale
+  locale: 'ru'
 })
 ```
 
 ### q: 语言包不生效怎么办？
 
 a: 请检查以下几点：
+
 1. 确保已安装 vue-i18n 依赖
 2. 检查语言代码是否正确（如 'zh-cn' 而不是 'zh'）
 3. 确保自定义语言包的格式正确

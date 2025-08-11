@@ -8,10 +8,7 @@ import { fileToBase64, useCropper } from '../../packages'
 const { showCropper, onCrop } = useCropper({
   el: '#demoContainer',
   aspectRatio: 1 / 1,
-  loadingText: '加载中...',
-  resetText: '还原',
-  confirmText: '确定',
-  cancelText: '取消',
+  locale: 'zh-CN'
 })
 
 // @vueuse/core

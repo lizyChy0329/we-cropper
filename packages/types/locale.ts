@@ -14,7 +14,7 @@ export interface LocaleMessages {
   }
 }
 
-export type LocaleCode = 'en' | 'zh-CN' | 'zh-TW' | 'ja' | 'ko' | 'fr' | 'de' | 'es'
+export type LocaleCode = 'en' | 'zh-CN' | 'zh-TW' | 'ja' | 'ko' | 'fr' | 'de' | 'es' | 'ru'
 
 export interface LocaleConfig {
   locale?: LocaleCode

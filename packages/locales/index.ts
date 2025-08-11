@@ -6,6 +6,7 @@ import ko from './ko'
 import fr from './fr'
 import de from './de'
 import es from './es'
+import ru from './ru'
 
 import type { LocaleMessages, LocaleCode } from '../types/locale'
 
@@ -17,7 +18,8 @@ export const messages: Record<LocaleCode, LocaleMessages> = {
   ko,
   fr,
   de,
-  es
+  es,
+  ru
 }
 
 export default messages

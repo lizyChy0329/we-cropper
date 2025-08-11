@@ -7,10 +7,6 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    'Carbon:logoGithub': typeof import('~icons/carbon/logo-github')['default']
-    'Carbon:logoTwitter': typeof import('~icons/carbon/logo-twitter')['default']
-    'Carbon:moon': typeof import('~icons/carbon/moon')['default']
-    'Carbon:sun': typeof import('~icons/carbon/sun')['default']
     Logo: typeof import('./src/components/Logo.vue')['default']
     Playground: typeof import('./src/components/Playground.vue')['default']
   }

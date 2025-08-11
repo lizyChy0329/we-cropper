@@ -1,4 +1,5 @@
-import { getCurrentInstance, h, render, ComputedRef } from 'vue'
+import { getCurrentInstance, h, render } from 'vue'
+import type { ComputedRef } from 'vue'
 
 import type { EventHookOn } from '@vueuse/core'
 import { createEventHook } from '@vueuse/core'
