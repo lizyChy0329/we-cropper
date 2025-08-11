@@ -1,20 +1,27 @@
 name: CI
 
 on:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 
-  # pull_request:
-  #   branches:
-  #     - main
+  pull_request:
+    branches:
+      - main
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    
+    strategy:
+      matrix:
+        node: [lts/*]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -25,7 +32,7 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: ${{ matrix.node }}
           cache: pnpm
 
       - name: Install dependencies
@@ -34,35 +41,29 @@ jobs:
       - name: Lint Staged
         run: pnpm lint-staged
 
-  # test:
-  #   runs-on: ${{ matrix.os }}
+  build:
+    runs-on: ${{ matrix.os }}
 
-  #   strategy:
-  #     matrix:
-  #       node: [lts/*]
-  #       os: [ubuntu-latest, windows-latest, macos-latest]
-  #     fail-fast: false
+    strategy:
+      matrix:
+        node: [lts/*]
+        os: [ubuntu-latest, windows-latest, macos-latest]
+      fail-fast: false
 
-  #   steps:
-  #     - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-  #     - name: Install pnpm
-  #       uses: pnpm/action-setup@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
-  #     - name: Set node version to ${{ matrix.node }}
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: ${{ matrix.node }}
-  #         cache: pnpm
+      - name: Set node version to ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
 
-  #     - name: Setup
-  #       run: npm i -g @antfu/ni
+      - name: Install dependencies
+        run: pnpm install
 
-  #     - name: Install
-  #       run: nci
-
-  #     - name: Build
-  #       run: nr build
-
-  #     - name: Test
-  #       run: nr test
+      - name: Build
+        run: pnpm build:lib
