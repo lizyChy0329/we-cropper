@@ -35,12 +35,12 @@ jobs:
 
       - name: Generate Changelog
         run: |
-          # 获取当前tag
-          CURRENT_TAG=${{ github.ref_name }}
+          # 获取当前tag（移除refs/tags/前缀）
+          CURRENT_TAG=$(echo "${{ github.ref }}" | sed 's|refs/tags/||')
           echo "Current tag: $CURRENT_TAG"
           
-          # 获取上一个tag
-          PREVIOUS_TAG=$(git describe --tags --abbrev=0 ${CURRENT_TAG}^ 2>/dev/null || echo "")
+          # 获取上一个tag（确保只获取真正的tag，不包含heads/前缀）
+          PREVIOUS_TAG=$(git tag --sort=-version:refname | grep -v "$CURRENT_TAG" | head -n 1)
           echo "Previous tag: $PREVIOUS_TAG"
           
           # 如果有上一个tag，则生成changelog
