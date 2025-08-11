@@ -35,13 +35,25 @@ jobs:
 
       - name: Generate Changelog
         run: |
+          # 检查是否为tag推送
+          if [[ "${{ github.ref }}" != refs/tags/* ]]; then
+            echo "Error: This workflow should only be triggered by tag pushes"
+            exit 1
+          fi
+          
           # 获取当前tag（移除refs/tags/前缀）
           CURRENT_TAG=$(echo "${{ github.ref }}" | sed 's|refs/tags/||')
           echo "Current tag: $CURRENT_TAG"
           
-          # 获取上一个tag（确保只获取真正的tag，不包含heads/前缀）
+          # 获取上一个tag（按版本排序，排除当前tag）
           PREVIOUS_TAG=$(git tag --sort=-version:refname | grep -v "$CURRENT_TAG" | head -n 1)
           echo "Previous tag: $PREVIOUS_TAG"
+          
+          # 验证当前tag是否存在
+          if ! git rev-parse "$CURRENT_TAG" >/dev/null 2>&1; then
+            echo "Error: Tag $CURRENT_TAG not found"
+            exit 1
+          fi
           
           # 如果有上一个tag，则生成changelog
           if [ -n "$PREVIOUS_TAG" ]; then
