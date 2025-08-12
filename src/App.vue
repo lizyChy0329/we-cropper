@@ -56,7 +56,7 @@ onBeforeMount(async () => {
           <div
             class="text-lg sm:text-2xl font-semibold text-slate-400 py-4 dark:text-slate-200"
           >
-            A wechat style image cropper wrapped with vue-advanced-cropper
+            A simple and powerful WeChat-style image cropper with Vue 3
           </div>
 
           <div

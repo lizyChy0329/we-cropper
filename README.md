@@ -2,7 +2,7 @@
   <img src="https://files.catbox.moe/cmdn41.svg" height="120" alt="we-cropper logo" />
   <h1>we-cropper</h1>
   <p>
-    <strong>A powerful WeChat-style image cropper with Vue 3</strong>
+    <strong>A simple and powerful WeChat-style image cropper with Vue 3</strong>
   </p>
   <p>
     <a href="https://www.npmjs.com/package/@lizychy0329/we-cropper">
