@@ -56,7 +56,7 @@ function createCropper(cropperConfig: WeCropperOptions): void {
 
 export function useCropper(options: UseCropperOptions = {}): {
   onCrop: EventHookOn<any>
-  showCropper: (src: string) => void
+  showCropper: (src: string, config?: UseCropperOptions) => void
   setLocale: (locale: LocaleCode) => void
   currentLocale: ComputedRef<LocaleCode>
 } {
@@ -71,10 +71,11 @@ export function useCropper(options: UseCropperOptions = {}): {
     customLocale: options.customLocale,
   })
 
-  const showCropper = (src: string): void => {
+  const showCropper = (src: string, config?: UseCropperOptions): void => {
     const cropperConfig = {
       src,
       ...options,
+      ...config,
       locale: currentLocale.value, // 使用动态的currentLocale值
     }
 

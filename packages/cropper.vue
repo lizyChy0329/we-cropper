@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { Cropper } from 'vue-advanced-cropper'
+import { Cropper, CircleStencil } from 'vue-advanced-cropper'
 import 'vue-advanced-cropper/dist/style.css'
 import 'vue-advanced-cropper/dist/theme.compact.css'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { useLocale } from './composables/useLocale'
-import type { WeCropperOptions } from './types'
+import type { WeCropperOptions, CropperShape } from './types'
 
 const props = withDefaults(defineProps<{
   modelValue: boolean
 } & WeCropperOptions>(), {
   modelValue: false,
   aspectRatio: 1 / 1,
+  shape: 'rectangle' as const,
   locale: 'en' as const,
   // 保持向后兼容的默认值
   loadingText: 'Loading...',
@@ -22,10 +23,12 @@ const props = withDefaults(defineProps<{
 const emit = defineEmits<{
   (e: 'update:modelValue', value: boolean): void
   (e: 'crop', base64String: string): void
+  (e: 'shape-change', shape: CropperShape): void
 }>()
 
 const cropperRef = ref()
 const isCropperPending = ref(true)
+const currentShape = ref<CropperShape>(props.shape)
 
 // 使用多语言功能
 const { t, currentLocale, mergeCustomLocale } = useLocale({
@@ -62,6 +65,56 @@ function cancel(): void {
   emit('update:modelValue', false)
 }
 
+// 当前裁剪模板
+const currentStencil = computed(() => {
+  return currentShape.value === 'circle' ? CircleStencil : undefined
+})
+
+// 获取裁剪模板属性
+const getStencilProps = () => {
+  const baseProps = {
+    movable: false,
+    resizable: true,
+    handlers: {
+      eastNorth: true,
+      north: false,
+      westNorth: true,
+      west: false,
+      westSouth: true,
+      south: false,
+      eastSouth: true,
+      east: false,
+    },
+  }
+
+  if (currentShape.value === 'circle') {
+    return {
+      ...baseProps,
+      aspectRatio: 1, // 圆形强制1:1比例
+      previewClassName: 'circle-preview',
+    }
+  }
+
+  return {
+    ...baseProps,
+    aspectRatio: props.aspectRatio,
+  }
+}
+
+// 切换形状
+const toggleShape = () => {
+  const newShape = currentShape.value === 'rectangle' ? 'circle' : 'rectangle'
+  setShape(newShape)
+}
+
+// 设置形状
+const setShape = (shape: CropperShape) => {
+  if (currentShape.value !== shape) {
+    currentShape.value = shape
+    emit('shape-change', shape)
+  }
+}
+
 // 向后兼容：获取文本的辅助函数
 const getText = (key: string, fallback: string) => {
   try {
@@ -89,21 +142,8 @@ const getText = (key: string, fallback: string) => {
       bsrc="https://0.z.wiki/autoupload/20240708/BSGF/1130X750/65535_53035727810_fce2af1c7e_h_750_1130_nofilter.jp"
       :src="src"
       :auto-zoom="true"
-      :stencil-props="{
-        movable: false,
-        resizable: true,
-        aspectRatio: props.aspectRatio,
-        handlers: {
-          eastNorth: true,
-          north: false,
-          westNorth: true,
-          west: false,
-          westSouth: true,
-          south: false,
-          eastSouth: true,
-          east: false,
-        },
-      }"
+      :stencil-component="currentStencil"
+      :stencil-props="getStencilProps()"
       image-restriction="stencil"
       :resize-image="{ touch: true, wheel: true, adjustStencil: false }"
       :min-width="300"
