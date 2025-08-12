@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.2.4",
   "packageManager": "pnpm@9.7.1",
-  "description": "A wechat style image cropper wrapper with vue-advanced-cropper",
+  "description": "A simple and powerful WeChat-style image cropper with Vue 3",
   "author": "@lizychy0329 <lizy0329@163.com>",
   "homepage": "https://github.com/lizyChy0329/we-cropper",
   "repository": {
@@ -49,6 +49,7 @@
     "@vue/tsconfig": "^0.5.1",
     "@vueuse/core": "^10.11.1",
     "bumpp": "^9.5.2",
+    "eslint": "^8.57.0",
     "eslint-plugin-format": "^0.1.2",
     "lint-staged": "^15.2.9",
     "shiki": "^1.13.0",
