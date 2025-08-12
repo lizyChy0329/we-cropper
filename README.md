@@ -18,6 +18,7 @@
 - 🌍 **i18n Support**: Built-in internationalization with 9 languages and custom locale support
 - 🚀 **Fixed Cropping Box**: Consistent cropping area with configurable aspect ratio
 - 🎯 **Auto Zoom**: Automatically zooms in on the crop area for precise editing
+- ⭕ **Multiple Shapes**: Support for both rectangle and circle cropping modes
 - ❄️ **ESM / UMD Support**: Works seamlessly in both modern and legacy environments
 
 ## Requirements
@@ -48,7 +49,6 @@ const { showCropper, onCrop } = useCropper({
   locale: 'en' // built-in English support
 })
 
-const { onChange } = useFileDialog({
 // Handle file selection with @vueuse/useFileDialog
 const { onChange } = useFileDialog({
   multiple: false,
@@ -68,6 +68,38 @@ onCrop((base64String) => {
 })
 ```
 
+### Circle Cropping Example
+
+```typescript
+import { fileToBase64, useCropper } from '@lizychy0329/we-cropper'
+
+// Initialize cropper with circle shape for avatar cropping
+const { showCropper, onCrop } = useCropper({
+  shape: 'circle', // Use circle cropping mode
+  aspectRatio: 1 / 1, // Perfect square ratio for circle
+  locale: 'en'
+})
+
+// Usage remains the same
+const { onChange } = useFileDialog({
+  multiple: false,
+  accept: 'image/*'
+})
+
+const avatarImage = ref('')
+onChange(async (files) => {
+  const base64String = await fileToBase64(files[0])
+  showCropper(base64String, {
+    shape: 'circle', // Or Use circle cropping mode in showCropper Dynamic
+  })
+})
+
+onCrop((base64String) => {
+  avatarImage.value = base64String
+  // Perfect circular avatar ready for upload
+})
+```
+
 ## Internationalization (i18n)
 
 ### Built-in Languages
@@ -77,8 +109,8 @@ we-cropper supports 9 languages out of the box:
 | Code | Language | File |
 |------|----------|------|
 | `en` | English | en.ts |
-| `zh-cn` | Chinese (Simplified) | zh-cn.ts |
-| `zh-tw` | Chinese (Traditional) | zh-tw.ts |
+| `zh-CN` | Chinese (Simplified) | zh-CN.ts |
+| `zh-TW` | Chinese (Traditional) | zh-TW.ts |
 | `ja` | Japanese | ja.ts |
 | `ko` | Korean | ko.ts |
 | `fr` | French | fr.ts |
@@ -109,9 +141,9 @@ const { showCropper, setLocale, currentLocale } = useCropper({
 })
 
 // Switch language dynamically
-function switchToChinese() {
+function switchToChinese(): void {
   setLocale('zh-CN')
-  console.log(currentLocale.value) // 'zh-cn'
+  console.log(currentLocale.value) // 'zh-CN'
 }
 
 // Show cropper with current language
@@ -124,7 +156,7 @@ showCropper('data:image/png;base64,...')
 import { useCropper } from '@lizychy0329/we-cropper'
 
 const customLocale = {
-  'en': {
+  en: {
     loading: 'Processing image...',
     reset: 'Reset Image',
     confirm: 'Confirm Crop',
@@ -153,10 +185,10 @@ const { showCropper } = useCropper({
 
 ```typescript
 function useCropper(options?: UseCropperOptions): {
-  onCrop: EventHookOn<string>     // Crop completion event
-  showCropper: (src: string) => void  // Display cropper
-  setLocale: (locale: LocaleCode) => void  // Set language
-  currentLocale: ComputedRef<LocaleCode>  // Current language
+  onCrop: EventHookOn<string> // Crop completion event
+  showCropper: (src: string) => void // Display cropper
+  setLocale: (locale: LocaleCode) => void // Set language
+  currentLocale: ComputedRef<LocaleCode> // Current language
 }
 ```
 
@@ -164,10 +196,11 @@ function useCropper(options?: UseCropperOptions): {
 
 ```typescript
 interface UseCropperOptions {
-  locale?: LocaleCode                    // Language setting
-  customLocale?: CustomLocale           // Custom language pack
-  aspectRatio?: number                   // Crop ratio (default: 1)
-  el?: HTMLElement | string             // Mount element (default: document.body)
+  locale?: LocaleCode // Language setting
+  customLocale?: CustomLocale // Custom language pack
+  aspectRatio?: number // Crop ratio (default: 1)
+  shape?: 'rectangle' | 'circle' // Crop shape (default: 'rectangle')
+  el?: HTMLElement | string // Mount element (default: document.body)
   // Legacy text props (deprecated but still supported)
   loadingText?: string
   resetText?: string
