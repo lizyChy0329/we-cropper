@@ -4,13 +4,16 @@ import { ref } from 'vue'
 import { useFileDialog } from '@vueuse/core'
 import { fileToBase64, useCropper } from '../../packages'
 import type { LocaleCode } from '../../packages/types/locale'
+import type { CropperShape } from '../../packages/types'
 
 // const demoContainer = ref(null)
 const currentLocale = ref<LocaleCode>('en')
+const currentShape = ref<CropperShape>('rectangle')
 const { showCropper, onCrop, setLocale } = useCropper({
   el: '#demoContainer',
   aspectRatio: 1 / 1,
-  locale: currentLocale.value
+  locale: currentLocale.value,
+  shape: currentShape.value
 })
 
 // @vueuse/core
@@ -27,7 +30,11 @@ onChange(async (files) => {
   }
 
   const base64String = await fileToBase64(files[0])
-  showCropper(base64String)
+  showCropper(base64String, {
+    shape: currentShape.value,
+    aspectRatio: 2 / 3,
+    locale: currentLocale.value
+  })
 })
 
 onCrop((base64String: string) => {
@@ -44,11 +51,15 @@ function changeLocale(locale: LocaleCode): void {
   currentLocale.value = locale
   setLocale(locale)
 }
+
+function changeShape(shape: CropperShape): void {
+  currentShape.value = shape
+}
 </script>
 
 <template>
-  <div id="demoContainer" class="relative p-6 bg-gray-100 dark:bg-[#262335] rounded-lg w-full sm:w-[375px] h-[738px] after:(content-['Demo'] absolute inset-0 flex justify-center items-center text-gray-400 text-2xl pointer-events-none)">
-    <div class="flex gap-2">
+  <div id="demoContainer" class="relative p-2 bg-gray-100 dark:bg-[#262335] rounded-lg w-full sm:w-[375px] h-[738px] after:(content-['Demo'] absolute inset-0 flex justify-center items-center text-gray-400 text-2xl pointer-events-none)">
+    <div class="flex gap-1 !text-sm">
       <button
         type="button" class="bg-[color:#44bd87] text-white border-b-[#249252] rounded  align-middle px-[15px] py-[3px] border-b-2 border-none border-solid outline-none
   text-shadow-[1px_1px_1px_#249252] hover:bg-[#19633b] active:(border-b-0 border-t-2 border-t-[#19633b])" @click="open()"
@@ -62,6 +73,15 @@ function changeLocale(locale: LocaleCode): void {
       >
         Reset
       </button>
+
+      <select 
+        v-model="currentShape" 
+        @change="changeShape(currentShape)"
+        class="bg-[color:#44bd87] text-white border-b-[#249252] rounded align-middle px-[15px] py-[3px] border-b-2 border-none border-solid outline-none text-shadow-[1px_1px_1px_#249252] hover:bg-[#19633b] active:(border-b-0 border-t-2 border-t-[#19633b])"
+      >
+        <option value="rectangle">矩形</option>
+        <option value="circle">圆形</option>
+      </select>
 
       <select 
         v-model="currentLocale" 
@@ -80,8 +100,8 @@ function changeLocale(locale: LocaleCode): void {
       </select>
     </div>
 
-    <div v-if="cropedImage" class="border-2 border-green border-solid bg-gray-300 p-1 size-50 mt-4">
-      <img :src="cropedImage" class="w-full h-full object-center object-cover" alt="图片">
+    <div v-if="cropedImage" class="border-2 border-green border-solid bg-gray-300 p-1 size-50 mt-4 overflow-hidden" :class="{ 'rounded-full': currentShape === 'circle' }">
+      <img :src="cropedImage" class="w-full h-full object-center object-cover" :class="{ 'rounded-full': currentShape === 'circle' }" alt="图片">
     </div>
   </div>
 </template>

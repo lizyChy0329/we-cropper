@@ -1,3 +1,5 @@
+export type CropperShape = 'rectangle' | 'circle'
+
 export interface WeCropperOptions {
   /**
    * A base64string created from File
@@ -19,6 +21,13 @@ export interface WeCropperOptions {
    * @default 1 / 1
    */
   aspectRatio?: number
+
+  /**
+   * Cropper shape selection
+   *
+   * @default 'rectangle'
+   */
+  shape?: CropperShape
 
   /**
    * Locale configuration for internationalization
