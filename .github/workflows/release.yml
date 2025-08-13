@@ -31,7 +31,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
-        run: pnpm i  --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Generate Changelog
         run: |
@@ -44,17 +44,17 @@ jobs:
             CURRENT_TAG=$(git tag --sort=-version:refname | head -n 1)
             echo "Current tag from git: $CURRENT_TAG"
           fi
-          
+
           # 获取上一个tag（按版本排序，排除当前tag）
           PREVIOUS_TAG=$(git tag --sort=-version:refname | grep -v "$CURRENT_TAG" | head -n 1)
           echo "Previous tag: $PREVIOUS_TAG"
-          
+
           # 验证当前tag是否存在
           if ! git rev-parse "$CURRENT_TAG" >/dev/null 2>&1; then
             echo "Error: Tag $CURRENT_TAG not found"
             exit 1
           fi
-          
+
           # 如果有上一个tag，则生成changelog
           if [ -n "$PREVIOUS_TAG" ]; then
             echo "Generating changelog from $PREVIOUS_TAG to $CURRENT_TAG"
@@ -68,13 +68,13 @@ jobs:
 
       - name: PNPM build lib
         run: pnpm build:lib
-          
+
       - name: Publish to NPM
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
           NPM_CONFIG_PROVENANCE: true
-          
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
