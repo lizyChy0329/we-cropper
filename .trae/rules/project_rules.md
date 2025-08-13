@@ -146,4 +146,4 @@ pnpm release
 >
 >  - Project structure and conventions（项目结构和惯例）（用 structure 作为分割）
 >
->  同时，将以上这段指令 录入到 project_rules.md 上
+>  后续还可以添加编码标准、工作流和团队最佳实践等内容
